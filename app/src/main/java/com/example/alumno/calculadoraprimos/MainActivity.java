@@ -42,9 +42,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         result = (TextView)findViewById((R.id.idResult));
         //devuelve el num que corresponde a la pos
 
-        String txt = (String) num;
+        String txt = String.valueOf(num);
 
-        result.setText(num);
+        result.setText(txt);
     }
 
 
