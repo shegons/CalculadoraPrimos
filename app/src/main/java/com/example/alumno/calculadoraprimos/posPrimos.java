@@ -5,35 +5,32 @@ package com.example.alumno.calculadoraprimos;
  */
 public class posPrimos {
 
-    public static int GetPrimeForPosition(int position) {
-        int primes = 0;
-        int current = 0;
+    static int numPrimo(int pos){
+        int numAct = 0;
+        int posAct = 0;
 
-        while (primes != position) {
-            current++;
-            if (isPrime(current)) {
-                primes++;
-            }
-        }
-        return current;
+        do{
+            numAct++; //cada vez que entra al bucle aumenta el valor del numero actual
+            if(esPrimo(numAct)==true) posAct ++; //si el numAct es primo, aumenta una posicion
+        }while(posAct != pos);
+        //sale del bucle si el valor de la posicion actual es igual a la posicion recibida
+
+        return numAct;
     }
 
-    public static boolean isPrime(int num) {
-        if (num == 2)
-            return true;
-        else if (num < 1 || num % 2 == 0) {
-            return false;
-        } else {
-            long max = (long) Math.sqrt(num);
+    //comprueba si es primo
+    static boolean esPrimo(int num){
 
-            for (int i = 3; i <= max; i++) {
-                if (num % i == 0) {
-                    return false;
-                }
-            }
-            return true;
+        int i = 2;
+        boolean primo = true;
+
+        //cuando el número sea primo no volvera a entrar en el bucle
+        while(i<num && primo==true){
+            if((num%i)==0) primo = false; //no es primo
+            else i++;
         }
 
-
+        if(primo==false) return false;
+        else return true;
     }
 }
